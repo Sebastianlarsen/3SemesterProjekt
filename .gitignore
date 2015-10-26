@@ -1,0 +1,26 @@
+### Java template
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+config.json
+/out
+out/
+/lib
+lib/
+/.idea
+.idea
+*.iml
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Mac crap:
+*.DS_Store
+
+# Created by .ignore support plugin (hsz.mobi)
