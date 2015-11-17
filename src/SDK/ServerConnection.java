@@ -16,6 +16,9 @@ public class ServerConnection {
 
     Socket ServerConnection;
 
+    public void setServerConnection(Socket serverConnection) {
+        ServerConnection = serverConnection;
+    }
 
     public ServerConnection(String hostname, int port) {
 
@@ -23,13 +26,22 @@ public class ServerConnection {
         this.port = port;
     }
 
+    /**
+     *
+     * @throws UnknownHostException
+     * @throws IOException
+     */
     public void connect() throws UnknownHostException, IOException {
         System.out.printf("Trying to connect to" + hostname, ":" + port);
         ServerConnection = new Socket(hostname, port);
         System.out.println("Connection established");
     }
 
-    public void readresponse() throws IOException {
+    /**
+     *
+     * @throws IOException
+     */
+    public void BufferedReader() throws IOException {
         String userInput;
         BufferedReader stdn = new BufferedReader(new InputStreamReader(ServerConnection.getInputStream()));
 

@@ -1,10 +1,9 @@
 package SDK;
+import Logic.ControlInput;
+
 /**
  * Created by Sebastian on 19-10-2015.
  */
-
-
-import Logic.ControlInput;
 
 public class Main {
 
@@ -13,6 +12,8 @@ public class Main {
 
          ControlInput controlInput = new ControlInput();
             controlInput.run();
+
+
 
       }
   }

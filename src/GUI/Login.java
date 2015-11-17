@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
  * Created by Sebastian on 30-10-2015.
  */
 
-    public class Login extends JPanel {
+public class Login extends JPanel {
 
     private JTextField txtUsername;
     private JLabel lblPassword;
@@ -23,8 +23,8 @@ import java.awt.event.ActionListener;
 
         ScreenSize screenSize = new ScreenSize();
 
-        int screenWidth = ScreenSize.getScreenWidth();
-        int screenHeight = ScreenSize.getScreenHeight();
+        int screenWidth = screenSize.getScreenWidth();
+        int screenHeight = screenSize.getScreenHeight();
 
 
         double width = 1*screenWidth;

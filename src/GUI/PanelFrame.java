@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class PanelFrame extends JFrame{
 
-    public static final String Deletegame = "name_165115347594465";
+    public static final String Deletegame = "Delete Game";
     public static final String Highscore = "Highscore";
     public static final String Play = "Play";
     public static final String Login = "Login";
@@ -59,28 +59,28 @@ public class PanelFrame extends JFrame{
         cardLayout = (CardLayout) getContentPane().getLayout();
     }
 
-    public static String getDeletegame() {
-        return Deletegame;
+    public DeleteGame getDeletegame() {
+        return deleteGame;
     }
 
-    public static String getHighscore() {
-        return Highscore;
+    public Highscore getHighscore() {
+        return highscore;
     }
 
-    public static String getPlay() {
-        return Play;
+    public Play getPlay() {
+        return play;
     }
 
-    public static String getLogin() {
-        return Login;
+    public Login getLogin() {
+        return login;
     }
 
-    public static String getStartMenu() {
-        return StartMenu;
+    public StartMenu getStartMenu() {
+        return startMenu;
     }
 
-    public static String getJoinGame() {
-        return JoinGame;
+    public JoinGame getJoinGame() {
+        return joinGame;
     }
     public void show(String card){
         cardLayout.show(this.getContentPane(),card);
