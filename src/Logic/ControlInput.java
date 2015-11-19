@@ -11,26 +11,29 @@ public class ControlInput {
 
     public Frame frame;
 
-    public ControlInput(){
+    public ControlInput() {
 
         frame = new Frame();
         frame.setVisible(true);
-    }
 
-    public void run(){
 
-         frame.getLogin().addActionlistener(new LoginActionListener());
+        frame.getPanelFrame().getLogin().addActionlistener(new LoginActionListener());
 
-    }
 
-    private class LoginActionListener implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
+        class LoginActionListener implements ActionListener {
+            public void actionPerformed(ActionEvent e) {
 
-            if (e.getSource() == frame.getLogin().getLogin().getBtnLogin()){
+                if (e.getSource() == frame.getPanelFrame().getLogin().getBtnLogin()) {
+                    frame.getPanelFrame().getCardLayout().show(frame.getPanelFrame(), getPanelFrame().getStartMenu);
 
+                }
             }
         }
+
     }
 
+    private class LoginActionListener {
+    }
 }
+
+

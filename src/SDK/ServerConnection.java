@@ -43,30 +43,18 @@ public class ServerConnection {
      */
     public void BufferedReader() throws IOException {
         String userInput;
-        BufferedReader stdn = new BufferedReader(new InputStreamReader(ServerConnection.getInputStream()));
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(ServerConnection.getInputStream()));
 
 
         System.out.println("Response from server");
-        while ((userInput = stdn.readLine()) != null) {
+        while ((userInput = stdIn.readLine()) != null) {
             System.out.println(userInput);
 
         }
     }
 
-    /*
-        ServerConnection client = new ServerConnection("localhost", 24599);
-        //creating an object of Serverconnection
-        try {
-            //trying to connect to server
-            client.connect();
-            //if succesfull, read response from server
-            client.readresponse();
-        } catch (UnknownHostException e) {
-            System.err.println("Host unknown. Cannot establish connection");
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.err.println("Cannot establish connection. Server may not be up." + e.getMessage());
-            e.printStackTrace();
-        }
-    }*/
+
+    public void readResponse() throws IOException{
+    }
 }
+

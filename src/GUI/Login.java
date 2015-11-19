@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 
@@ -23,18 +24,17 @@ public class Login extends JPanel {
 
         ScreenSize screenSize = new ScreenSize();
 
-        int screenWidth = screenSize.getScreenWidth();
-        int screenHeight = screenSize.getScreenHeight();
+        int screenWidth = ScreenSize.getScreenWidth();
+        int screenHeight = ScreenSize.getScreenHeight();
 
 
-        double width = 1*screenWidth;
-        double height = 1*screenHeight;
+        double width = 1.6*screenWidth;
+        double height = 1.6*screenHeight;
 
         int txt_width = (int) width;
         int txt_height = (int) height;
 
-        System.out.println(txt_width);
-        System.out.println(txt_height);
+        setBackground(Color.GREEN);
         setLayout(null);
 
 
@@ -52,10 +52,10 @@ public class Login extends JPanel {
 
 
         lblPassword.setBounds(70, 30, 150, 20);
-        txtUsername.setBounds(70, 30, 150, 20);
+        txtUsername.setBounds(70, 30, txt_width, txt_height);
         lblUsername.setBounds(300, 250, 120, 30);
         LoginLabel.setBounds(400, 150, 70, 30);
-        txtPassword.setBounds(200, 60, 200, 50);
+        txtPassword.setBounds(200, 60, txt_width, txt_height);
         btnLogin.setBounds(350, 600, 160, 30);
 
 
@@ -84,6 +84,4 @@ public class Login extends JPanel {
     public void addActionListener(ActionListener l){
         btnLogin.addActionListener(l);
     }
-
-
 }

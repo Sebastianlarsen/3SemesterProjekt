@@ -15,7 +15,6 @@ public class PanelFrame extends JFrame{
     public static final String Login = "Login";
     public static final String StartMenu = "Start Menu";
     public static final String JoinGame = "Join Game";
-    private JPanel Panel;
     private Login login;
     private DeleteGame deleteGame;
     private Highscore highscore;
@@ -25,36 +24,36 @@ public class PanelFrame extends JFrame{
     private CardLayout cardLayout;
 
     public PanelFrame(){
-        Panel = new JPanel();
+        JPanel panel = new JPanel();
         ScreenSize screenSize = new ScreenSize();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setContentPane(Panel);
-        setSize(screenSize.getScreenWidth(),screenSize.getScreenHeight());
+        setContentPane(panel);
+        setSize(2000,3000);
         setTitle("Snake Client");
         setLocationRelativeTo(null);
 
-        Panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        Panel.setLayout(new CardLayout(0,0));
+        panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        panel.setLayout(new CardLayout(0, 0));
 
 
         deleteGame = new DeleteGame();
-        Panel.add(deleteGame, Deletegame);
+        panel.add(deleteGame, Deletegame);
 
         login = new Login();
-        Panel.add(login, Login);
+        panel.add(login, Login);
 
         highscore = new Highscore();
-        Panel.add(highscore, Highscore);
+        panel.add(highscore, Highscore);
 
         play = new Play();
-        Panel.add(play, Play);
+        panel.add(play, Play);
 
         joinGame = new JoinGame();
-        Panel.add(joinGame, JoinGame);
+        panel.add(joinGame, JoinGame);
 
         startMenu = new StartMenu();
-        Panel.add(startMenu, StartMenu);
+        panel.add(startMenu, StartMenu);
 
         cardLayout = (CardLayout) getContentPane().getLayout();
     }
@@ -85,5 +84,4 @@ public class PanelFrame extends JFrame{
     public void show(String card){
         cardLayout.show(this.getContentPane(),card);
     }
-
 }
