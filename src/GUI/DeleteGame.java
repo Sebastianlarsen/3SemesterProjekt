@@ -1,63 +1,61 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 
-/**
- * Created by Sebastian on 30-10-2015.
- */
-public class DeleteGame extends JPanel {
+public class DeleteGame extends JFrame {
 
-    private JLabel lblDeleteGame;
-    private JLabel lblinsertGameID;
-    private JTextField txtGameID;
-    private JButton btnDelete;
-    private JButton btnBack;
-
-    public DeleteGame () {
-
-        setLayout(null);
+    private JPanel contentPane;
+    private JTextField textField;
+    private JButton BtnBack;
+    private JButton BtnDeleteGame;
 
 
-        lblDeleteGame = new JLabel("Delete Game");
-        lblinsertGameID = new JLabel("Insert GameID");
-        txtGameID = new JTextField();
-        btnBack = new JButton("Back");
-        btnDelete = new JButton("Delete");
 
+    /**
+     * Create the frame.
+     */
+    public DeleteGame() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
-        lblDeleteGame.setBounds(70, 30, 150, 20);
-        lblinsertGameID.setBounds(70, 30, 150, 20);
-        txtGameID.setBounds(300, 250, 120, 30);
-        btnDelete.setBounds(400, 150, 70, 30);
-        btnBack.setBounds(200, 60, 200, 50);
+        JLabel lblDeleteGame = new JLabel("Delete Game");
+        lblDeleteGame.setHorizontalAlignment(SwingConstants.CENTER);
+        lblDeleteGame.setBounds(69, 51, 95, 14);
+        contentPane.add(lblDeleteGame);
 
+        JLabel lblGameID = new JLabel("Insert GameID");
+        lblGameID.setHorizontalAlignment(SwingConstants.CENTER);
+        lblGameID.setBounds(69, 98, 95, 14);
+        contentPane.add(lblGameID);
 
-        //adding all to the LoginPanel
-        add(lblDeleteGame);
-        add(lblinsertGameID);
-        add(txtGameID);
-        add(btnBack);
-        add(btnDelete);
+        textField = new JTextField();
+        textField.setText("...");
+        textField.setBounds(190, 95, 166, 20);
+        contentPane.add(textField);
+        textField.setColumns(10);
 
+        JButton btnDeleteGame = new JButton("Delete Game");
+        btnDeleteGame.setBounds(279, 227, 145, 23);
+        contentPane.add(btnDeleteGame);
+
+        JButton btnBack = new JButton("Back");
+        btnBack.setBounds(180, 227, 89, 23);
+        contentPane.add(btnBack);
     }
-
-        public JTextField getTxtGameID() {
-            return txtGameID;
-        }
-
-        public JButton getBtnDelete() {
-            return btnDelete;
-        }
-
-        public JButton getBtnBack() {
-            return btnBack;
-        }
-
-        public void addActionListener(ActionListener l){
-
-            btnDelete.addActionListener(l);
-            btnBack.addActionListener(l);
-
+    public JButton getBtnBack(){
+        return BtnBack;
+    }
+    public JButton getBtnDeleteGame(){
+        return BtnDeleteGame;
+    }
+    public void addActionListener(ActionListener l){
+        BtnDeleteGame.addActionListener(l);
+        BtnBack.addActionListener(l);
     }
 }

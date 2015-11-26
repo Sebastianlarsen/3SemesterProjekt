@@ -1,14 +1,11 @@
 package GUI;
 
-import java.awt.*;
+        import java.awt.*;
 
 
-/**
- * Created by Sebastian on 31-10-2015.
- */
 public class ScreenSize {
 
-   private static Dimension ScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private static Dimension ScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 
     private static int screenWidth = (int) ScreenSize.getWidth();

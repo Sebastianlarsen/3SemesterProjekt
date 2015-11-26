@@ -4,83 +4,75 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+public class Login extends JFrame {
 
-/**
- * Created by Sebastian on 30-10-2015.
- */
-
-public class Login extends JPanel {
-
-    private JTextField txtUsername;
-    private JLabel lblPassword;
+    public JFrame frame;
+    private JTextField textField;
+    private JPasswordField passwordField;
     private JButton btnLogin;
-    private JLabel LoginLabel;
     private JLabel lblUsername;
-    private JTextField txtPassword;
+    private JLabel lblPassword;
 
-
-
+    /**
+     * Create the application.
+     */
     public Login() {
-
-        ScreenSize screenSize = new ScreenSize();
-
-        int screenWidth = ScreenSize.getScreenWidth();
-        int screenHeight = ScreenSize.getScreenHeight();
-
-
-        double width = 1.6*screenWidth;
-        double height = 1.6*screenHeight;
-
-        int txt_width = (int) width;
-        int txt_height = (int) height;
-
-        setBackground(Color.GREEN);
-        setLayout(null);
-
-
-        lblPassword = new JLabel();
-        txtUsername = new JTextField();
-        lblUsername = new JLabel("Username");
-        LoginLabel = new JLabel("Login");
-        txtPassword = new JTextField("Password");
-        btnLogin = new JButton("Login");
-
-
-        setSize(300, 200);
-        setLocation(500, 280);
-        LoginLabel.setLayout(null);
-
-
-        lblPassword.setBounds(70, 30, 150, 20);
-        txtUsername.setBounds(70, 30, txt_width, txt_height);
-        lblUsername.setBounds(300, 250, 120, 30);
-        LoginLabel.setBounds(400, 150, 70, 30);
-        txtPassword.setBounds(200, 60, txt_width, txt_height);
-        btnLogin.setBounds(350, 600, 160, 30);
-
-
-
-        //adding all to the LoginPanel
-        LoginLabel.add(lblPassword);
-        LoginLabel.add(lblUsername);
-        LoginLabel.add(txtUsername);
-        LoginLabel.add(txtPassword);
-        LoginLabel.add(btnLogin);
-
+        initialize();
     }
 
+    /**
+     * Initialize the contents of the frame.
+     */
+    private void initialize() {
+        frame = new JFrame();
+        frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+        frame.setBounds(100, 100, 450, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+
+        JButton btnLogin = new JButton("Login");
+        btnLogin.setBounds(335, 227, 89, 23);
+        frame.getContentPane().add(btnLogin);
+
+        JLabel lblUsername = new JLabel("Username");
+        lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
+        lblUsername.setBounds(46, 78, 100, 23);
+        frame.getContentPane().add(lblUsername);
+
+        textField = new JTextField();
+        textField.setBounds(207, 79, 179, 20);
+        frame.getContentPane().add(textField);
+        textField.setColumns(10);
+
+        JLabel lblPassword = new JLabel("Password");
+        lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
+        lblPassword.setBounds(46, 153, 100, 14);
+        frame.getContentPane().add(lblPassword);
+
+        JButton btnCreateUser = new JButton("Create User");
+        btnCreateUser.setBounds(207, 227, 118, 23);
+        frame.getContentPane().add(btnCreateUser);
+
+        passwordField = new JPasswordField();
+        passwordField.setBounds(207, 153, 179, 20);
+        frame.getContentPane().add(passwordField);
+
+        JLabel lblWelcomeToSnake = new JLabel("Welcome to Snake - Please Login or Create an User");
+        lblWelcomeToSnake.setHorizontalAlignment(SwingConstants.CENTER);
+        lblWelcomeToSnake.setBounds(10, 11, 414, 23);
+        frame.getContentPane().add(lblWelcomeToSnake);
+    }
     public JTextField getTxtUsername() {
-        return txtUsername;
+        return textField;
     }
 
     public JTextField getTxtPassword() {
-        return txtPassword;
+        return passwordField;
     }
 
     public JButton getBtnLogin() {
         return btnLogin;
     }
-
     public void addActionListener(ActionListener l){
         btnLogin.addActionListener(l);
     }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+
 /**
  * Created by Sebastian on 16-11-2015.
  */
@@ -15,51 +16,74 @@ public class PanelFrame extends JFrame{
     public static final String Login = "Login";
     public static final String StartMenu = "Start Menu";
     public static final String JoinGame = "Join Game";
+    public static final String CreateGame = "Create Game";
+    private JPanel contentpane;
     private Login login;
     private DeleteGame deleteGame;
+    private CreateGame createGame;
     private Highscore highscore;
     private Play play;
     private JoinGame joinGame;
     private StartMenu startMenu;
     private CardLayout cardLayout;
 
+
     public PanelFrame(){
-        JPanel panel = new JPanel();
+        contentpane = new JPanel();
         ScreenSize screenSize = new ScreenSize();
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setContentPane(panel);
-        setSize(2000,3000);
-        setTitle("Snake Client");
-        setLocationRelativeTo(null);
 
-        panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        panel.setLayout(new CardLayout(0, 0));
+
+            /**
+             * Initialize the contents of the frame.
+             */
+
+
+                setBounds(100, 100, 450, 300);
+                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                setTitle("Snake Game");
+                setContentPane(contentpane);
+                setSize(screenSize.getFrameWidth(), screenSize.getFrameHeight());
+                setLayout(null);
+
+
+
+        contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentpane.setLayout(new CardLayout(0, 0));
 
 
         deleteGame = new DeleteGame();
-        panel.add(deleteGame, Deletegame);
+        contentpane.add(deleteGame, Deletegame);
+
+        createGame = new CreateGame();
+        contentpane.add(createGame, CreateGame);
 
         login = new Login();
-        panel.add(login, Login);
+        contentpane.add(login, Login);
 
         highscore = new Highscore();
-        panel.add(highscore, Highscore);
+        contentpane.add(highscore, Highscore);
 
         play = new Play();
-        panel.add(play, Play);
+        contentpane.add(play, Play);
 
         joinGame = new JoinGame();
-        panel.add(joinGame, JoinGame);
+        contentpane.add(joinGame, JoinGame);
 
         startMenu = new StartMenu();
-        panel.add(startMenu, StartMenu);
+        contentpane.add(startMenu, StartMenu);
 
         cardLayout = (CardLayout) getContentPane().getLayout();
     }
 
+    private void setSize(double frameWidth, double frameHeight) {
+    }
+
     public DeleteGame getDeletegame() {
         return deleteGame;
+    }
+    public CreateGame getCreateGame(){
+        return createGame;
     }
 
     public Highscore getHighscore() {
@@ -85,3 +109,6 @@ public class PanelFrame extends JFrame{
         cardLayout.show(this.getContentPane(),card);
     }
 }
+
+
+

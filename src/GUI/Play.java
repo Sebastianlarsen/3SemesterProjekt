@@ -3,62 +3,58 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-/**
- * Created by Sebastian on 10-11-2015.
- */
 public class Play extends JPanel {
-    private JLabel lblPlay;
-    private JButton btnBack;
-    private JButton btnCreateGame;
-    private JButton btnJoinGame;
 
-    public Play (){
+    private JFrame frame;
+    private JButton BtnBack;
+    private JButton BtnJoinGame;
+    private JButton BtnCreateGame;
 
-        setLayout(null);
-
-
-        lblPlay = new JLabel("Play Snake");
-        btnCreateGame = new JButton("Create Game ");
-        btnJoinGame = new JButton("Join Game");
-        btnBack = new JButton("Back");
-
-
-        lblPlay.setBounds(70, 30, 150, 20);
-        btnCreateGame.setBounds(70, 30, 150, 20);
-        btnJoinGame.setBounds(300, 250, 120, 30);
-        btnBack.setBounds(200, 60, 200, 50);
-
-
-        //adding all to the LoginPanel
-        add(lblPlay);
-        add(btnCreateGame);
-        add(btnJoinGame);
-        add(btnBack);
-
+    /**
+     * Create the application.
+     */
+    public Play() {
+        initialize();
     }
 
-    public JLabel getLblPlay() {
-        return lblPlay;
-    }
+    /**
+     * Initialize the contents of the frame.
+     */
+    private void initialize() {
+        frame = new JFrame();
+        frame.setBounds(100, 100, 450, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
 
-    public JButton getBtnCreateGame() {
-        return btnCreateGame;
-    }
+        JLabel lblPlaySnake = new JLabel("Play Snake");
+        lblPlaySnake.setHorizontalAlignment(SwingConstants.CENTER);
+        lblPlaySnake.setBounds(146, 26, 136, 14);
+        frame.getContentPane().add(lblPlaySnake);
 
+        JButton btnJoinGame = new JButton("Join Game");
+        btnJoinGame.setBounds(278, 227, 146, 23);
+        frame.getContentPane().add(btnJoinGame);
+
+        JButton btnCreateGame = new JButton("Create Game");
+        btnCreateGame.setBounds(148, 227, 120, 23);
+        frame.getContentPane().add(btnCreateGame);
+
+        JButton btnBack = new JButton("Back");
+        btnBack.setBounds(10, 227, 128, 23);
+        frame.getContentPane().add(btnBack);
+    }
+    public JButton getBtnBack(){
+        return BtnBack;
+    }
     public JButton getBtnJoinGame(){
-        return btnJoinGame;
+        return BtnJoinGame;
     }
-
-    public JButton getBtnBack() {
-        return btnBack;
+    public JButton getBtnCreateGame(){
+        return BtnCreateGame;
     }
-
     public void addActionListener(ActionListener l){
-
-        btnCreateGame.addActionListener(l);
-        btnJoinGame.addActionListener(l);
-        btnBack.addActionListener(l);
-
+        BtnJoinGame.addActionListener(l);
+        BtnBack.addActionListener(l);
+        BtnCreateGame.addActionListener(l);
     }
 }
-
