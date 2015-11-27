@@ -6,9 +6,17 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import javax.swing.*;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.URL;
+import java.util.Scanner;
 
 
 public class ServerConnection {
+
+    private static Socket socket;
+    private static PrintWriter printWriter;
+    private static Scanner sc;
 
     public ServerConnection() {
         this.hostAddress = "http://localhost";
@@ -34,7 +42,7 @@ public class ServerConnection {
         return port;
     }
 
-    public String get(String path) {
+    public ClientResponse get(String path) {
 
         try {
 
@@ -48,7 +56,7 @@ public class ServerConnection {
             clientResponse.getEntity(String.class);
             System.out.println(clientResponse);
 
-            return String.valueOf(clientResponse);
+            return clientResponse;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -56,7 +64,7 @@ public class ServerConnection {
     }
 
 
-    public String post(String json, String path, PanelFrame frame) {
+    public ClientResponse post(String json, String path, PanelFrame frame) {
 
         try {
             Client client = Client.create();
@@ -73,7 +81,7 @@ public class ServerConnection {
             System.out.println(ClientResponse);
 
             if (ClientResponse != null) {
-                return ClientResponse.getEntity(String.class);
+                return ClientResponse;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,10 +89,11 @@ public class ServerConnection {
 
 
         }
-        return json;
+        return null;
     }
 
-    public String Delete(String path) {
+
+    public ClientResponse Delete(String path) {
         try {
             Client client = Client.create();
 
@@ -95,7 +104,7 @@ public class ServerConnection {
             ClientResponse.getEntity(String.class);
             System.out.println(ClientResponse);
 
-            return String.valueOf(ClientResponse);
+            return ClientResponse;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +112,7 @@ public class ServerConnection {
 
         }
     }
-}
+
 
   /*  public  Parser(String Json, User user) {
         JsonParser jsonParser = new JsonParser();
@@ -126,3 +135,26 @@ public class ServerConnection {
 
     }
     }*/
+    private static URL url;
+
+    public void socketMethod() {
+        try {
+
+
+            socket = new Socket("localhost", 24599);
+            url = new URL("http://localhost:29399/api/users");
+
+            printWriter = new PrintWriter(socket.getOutputStream(), true);
+            printWriter.println(" LOL ");
+
+            sc = new Scanner(System.in);
+            printWriter.println("Input: ");
+            String string = sc.next();
+
+            printWriter.println(string + " you have written.");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

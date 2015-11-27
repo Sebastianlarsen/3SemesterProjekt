@@ -4,9 +4,6 @@ import GUI.PanelFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Scanner;
 
 
 /**
@@ -15,9 +12,7 @@ import java.util.Scanner;
 public class ControlInput {
 
 
-    private static Socket socket;
-    private static PrintWriter printWriter;
-    private static Scanner sc;
+
 
     private PanelFrame frame;
 
@@ -39,33 +34,14 @@ public class ControlInput {
 
     }
 
-    public void socketMethod() {
-        try {
 
 
-            socket = new Socket("localhost", 24599);
-
-            printWriter = new PrintWriter(socket.getOutputStream(), true);
-            printWriter.println(" LOL ");
-
-            sc = new Scanner(System.in);
-            printWriter.println("Input: ");
-            String string = sc.next();
-
-            printWriter.println(string + " you have written.");
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    class LoginActionListener implements ActionListener {
+    private class LoginActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == frame.getLogin().getBtnLogin()) {
                 frame.show(PanelFrame.StartMenu);
             }
-
 
         }
     }
@@ -75,6 +51,7 @@ public class ControlInput {
 
             if (e.getSource() == frame.getStartMenu().getBtnDeleteGame()) {
                 frame.show(PanelFrame.StartMenu);
+
             } else if (e.getSource() == frame.getStartMenu().getBtnHighscore()) {
 
                 frame.show(PanelFrame.Highscore);

@@ -49,10 +49,6 @@ public class Login extends JFrame {
         lblPassword.setBounds(46, 153, 100, 14);
         frame.getContentPane().add(lblPassword);
 
-        JButton btnCreateUser = new JButton("Create User");
-        btnCreateUser.setBounds(207, 227, 118, 23);
-        frame.getContentPane().add(btnCreateUser);
-
         passwordField = new JPasswordField();
         passwordField.setBounds(207, 153, 179, 20);
         frame.getContentPane().add(passwordField);
