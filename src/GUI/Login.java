@@ -53,7 +53,7 @@ public class Login extends JFrame {
         passwordField.setBounds(207, 153, 179, 20);
         frame.getContentPane().add(passwordField);
 
-        JLabel lblWelcomeToSnake = new JLabel("Welcome to Snake - Please Login or Create an User");
+        JLabel lblWelcomeToSnake = new JLabel("Welcome to Snake - Please Login");
         lblWelcomeToSnake.setHorizontalAlignment(SwingConstants.CENTER);
         lblWelcomeToSnake.setBounds(10, 11, 414, 23);
         frame.getContentPane().add(lblWelcomeToSnake);
