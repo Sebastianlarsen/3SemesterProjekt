@@ -52,6 +52,7 @@ public class ServerConnection {
             System.out.println("\nOutput from Server... \n");
             String output = clientResponse.getEntity(String.class);
             System.out.println(output);
+            System.out.println("test test test test");
 
             return output;
         } catch (Exception e) {
@@ -61,7 +62,7 @@ public class ServerConnection {
     }
 
 
-    public ClientResponse post(String json, String path, PanelFrame frame) {
+    public String post(String json, String path, PanelFrame frame) {
 
         try {
             Client client = Client.create();
@@ -74,11 +75,11 @@ public class ServerConnection {
                     + ClientResponse.getStatus());
         }
             System.out.println("\nOutput from Server... \n");
-            ClientResponse.getEntity(String.class);
-            System.out.println(ClientResponse);
+            String output = ClientResponse.getEntity(String.class);
+            System.out.println(output);
 
             if (ClientResponse != null) {
-                return ClientResponse;
+                return output;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,11 +87,11 @@ public class ServerConnection {
 
 
         }
-        return null;
+        return "";
     }
 
 
-    public ClientResponse Delete(String path) {
+    public String Delete(String path) {
         try {
             Client client = Client.create();
 
@@ -98,14 +99,14 @@ public class ServerConnection {
             ClientResponse ClientResponse = webResource.type("application/json").post(ClientResponse.class);
 
             System.out.println("\nOutput from Server... \n");
-            ClientResponse.getEntity(String.class);
-            System.out.println(ClientResponse);
+            String output = ClientResponse.getEntity(String.class);
+            System.out.println(output);
 
-            return ClientResponse;
+            return output;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return "";
 
         }
     }
