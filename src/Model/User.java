@@ -1,10 +1,10 @@
-package SDK;
+package Model;
 
 /**
  * Created by Sebastian on 27-11-2015.
  */
 public class User {
-    private int id;
+    private long id;
     private String firstname;
     private String lastname;
     private String email;
@@ -18,7 +18,7 @@ public class User {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -54,7 +54,7 @@ public class User {
         return created;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

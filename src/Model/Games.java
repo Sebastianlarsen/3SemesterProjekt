@@ -1,4 +1,4 @@
-package SDK;
+package Model;
 
 import java.util.Date;
 

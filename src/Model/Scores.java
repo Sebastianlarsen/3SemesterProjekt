@@ -1,4 +1,4 @@
-package SDK;
+package Model;
 /**
  * Created by Sebastian on 27-11-2015.
  */

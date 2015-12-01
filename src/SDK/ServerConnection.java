@@ -1,11 +1,12 @@
 package SDK;
 
 import GUI.PanelFrame;
+import Model.User;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -52,7 +53,7 @@ public class ServerConnection {
             System.out.println("\nOutput from Server... \n");
             String output = clientResponse.getEntity(String.class);
             System.out.println(output);
-            System.out.println("test test test test");
+
 
             return output;
         } catch (Exception e) {
@@ -70,17 +71,17 @@ public class ServerConnection {
             WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
             ClientResponse ClientResponse = webResource.type("application/json").post(ClientResponse.class, json);
 
-        if (ClientResponse.getStatus() != 200 && ClientResponse.getStatus() != 201) {
+        /*if (ClientResponse.getStatus() != 200 && ClientResponse.getStatus() != 201) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + ClientResponse.getStatus());
-        }
+        }*/
             System.out.println("\nOutput from Server... \n");
             String output = ClientResponse.getEntity(String.class);
             System.out.println(output);
 
-            if (ClientResponse != null) {
+           // if (ClientResponse != null) {
                 return output;
-            }
+            //}
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(frame, "HTTP failed", "Error", JOptionPane.ERROR_MESSAGE);
