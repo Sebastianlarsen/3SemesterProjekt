@@ -1,7 +1,13 @@
 package Logic;
 
 import GUI.PanelFrame;
+import SDK.ServerConnection;
+import Model.User;
+import com.google.gson.Gson;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.PrintWriter;
@@ -20,22 +26,28 @@ public class ControlInput {
 
 
     private PanelFrame frame;
+    User currentUser = new User ();
+    Controls controls;
+    private ServerConnection serverConnection;
 
     public ControlInput() {
 
         frame = new PanelFrame();
         frame.setVisible(true);
 
-    }
-
-    public void run() {
         frame.getLogin().addActionListener(new LoginActionListener());
         frame.getStartMenu().addActionListener(new StartMenuActionListener());
         frame.getHighscore().addActionListener(new HighscoreActionListener());
         frame.getJoinGame().addActionListener(new JoinGameActionListener());
         frame.getPlay().addActionListener(new PlayActionListener());
         frame.getDeletegame().addActionListener(new DeleteGameActionListener());
+
         frame.show(frame.Login);
+
+        serverConnection = new ServerConnection();
+        controls = new Controls();
+
+
 
     }
 
@@ -65,9 +77,11 @@ public class ControlInput {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == frame.getLogin().getBtnLogin()) {
-                frame.show(PanelFrame.StartMenu);
+                if(login()) {
+                    frame.show(PanelFrame.StartMenu);
+                    System.out.println(currentUser.getId());
+                }
             }
-
         }
     }
 
@@ -78,6 +92,8 @@ public class ControlInput {
                 frame.show(PanelFrame.StartMenu);
 
             } else if (e.getSource() == frame.getStartMenu().getBtnHighscore()) {
+
+                //
 
                 frame.show(PanelFrame.Highscore);
 
@@ -98,7 +114,7 @@ public class ControlInput {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == frame.getHighscore().getBtnBack()){
-                frame.show(PanelFrame.Highscore);
+                frame.show(PanelFrame.StartMenu);
             }
         }
     }
@@ -110,6 +126,7 @@ public class ControlInput {
                 frame.show(PanelFrame.StartMenu);
             }
             else if (e.getSource()== frame.getJoinGame()){
+                frame.show(PanelFrame.JoinGame);
 
             }
             else if (e.getSource() == frame.getJoinGame().getcombobox()){
@@ -140,9 +157,72 @@ public class ControlInput {
             }
         }
     }
+    public boolean login(){
+        try {
+            String username = frame.getLogin().getTxtUsername().getText();
+            String password = frame.getLogin().getTxtPassword().getText();
 
+            if(!username.equals("") && !password.equals("")){
+                User user = new User();
+                user.setUsername(username);
+                user.setPassword(password);
 
+                String Json = new Gson().toJson(user);
+                String msg = loginParser(serverConnection.post(Json, "login/", frame),user);
+
+                if(msg.equals("Login successful")){
+
+                    currentUser = user;
+
+                    serverConnection.parser(serverConnection.get("users/" + currentUser.getId()+"/"),currentUser);
+
+                    frame.getLogin().ClearLogin();
+
+                    return true;
+                }
+                else if(msg.equals("Wrong username or password")){
+                    JOptionPane.showMessageDialog(frame, "Wrong username or password",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if (msg.equals("Error in JSON")){
+                    JOptionPane.showMessageDialog(frame, "Backend issue",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(frame, "Recheck spelling",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public String loginParser(String string, User user) {
+        JSONParser parser = new JSONParser();
+        String msg = new String();
+        int id = 0;
+
+        try{
+            Object objectMsg = parser.parse(string);
+            JSONObject jsonObjectMsg = (JSONObject) objectMsg;
+
+            msg =((String)jsonObjectMsg.get("message"));
+
+            System.out.println(msg);
+            user.setId((long) jsonObjectMsg.get("userid"));
+
+            return msg;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+
+
+
 
 
 
