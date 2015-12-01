@@ -6,65 +6,56 @@ import java.awt.event.ActionListener;
 public class StartMenu extends JPanel {
 
     private JFrame frame;
-    private JButton BtnHighscore;
-    private JButton BtnPlaySnake;
-    private JButton BtnLogout;
-    private JButton BtnDeleteGame;
+    private JLabel lblStartMenu;
+    private JButton btnHighscore;
+    private JButton btnPlaySnake;
+    private JButton btnLogout;
+    private JButton btnDeleteGame;
 
     /**
      * Create the application.
      */
     public StartMenu() {
-        initialize();
-    }
+        setLayout(null);
 
-    /**
-     * Initialize the contents of the frame.
-     */
-    private void initialize() {
-        frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
-
-        JLabel lblStartMenu = new JLabel("Start Menu");
+        lblStartMenu = new JLabel("Start Menu");
         lblStartMenu.setHorizontalAlignment(SwingConstants.CENTER);
         lblStartMenu.setBounds(172, 30, 130, 14);
-        frame.getContentPane().add(lblStartMenu);
+        add(lblStartMenu);
 
-        JButton btnHighscore = new JButton("Highscore");
+        btnHighscore = new JButton("Highscore");
         btnHighscore.setBounds(45, 55, 139, 23);
-        frame.getContentPane().add(btnHighscore);
+        add(btnHighscore);
 
-        JButton btnPlaySnake = new JButton("Play Snake");
+        btnPlaySnake = new JButton("Play Snake");
         btnPlaySnake.setBounds(45, 104, 139, 23);
-        frame.getContentPane().add(btnPlaySnake);
+        add(btnPlaySnake);
 
-        JButton btnLogout = new JButton("Logout");
+        btnLogout = new JButton("Logout");
         btnLogout.setBounds(45, 196, 139, 23);
-        frame.getContentPane().add(btnLogout);
+        add(btnLogout);
 
-        JButton btnDeleteGame = new JButton("Delete Game");
+        btnDeleteGame = new JButton("Delete Game");
         btnDeleteGame.setBounds(45, 151, 139, 23);
-        frame.getContentPane().add(btnDeleteGame);
+        add(btnDeleteGame);
     }
     public JButton getBtnHighscore(){
-        return BtnHighscore;
+        return btnHighscore;
     }
     public JButton getBtnPlaySnake(){
-        return BtnPlaySnake;
+        return btnPlaySnake;
     }
     public JButton getBtnLogout(){
-        return BtnLogout;
+        return btnLogout;
     }
     public JButton getBtnDeleteGame(){
-        return BtnDeleteGame;
+        return btnDeleteGame;
     }
     public void addActionListener(ActionListener l){
-        BtnHighscore.addActionListener(l);
-        BtnPlaySnake.addActionListener(l);
-        BtnLogout.addActionListener(l);
-        BtnDeleteGame.addActionListener(l);
+        btnHighscore.addActionListener(l);
+        btnPlaySnake.addActionListener(l);
+        btnLogout.addActionListener(l);
+        btnDeleteGame.addActionListener(l);
     }
 }
 

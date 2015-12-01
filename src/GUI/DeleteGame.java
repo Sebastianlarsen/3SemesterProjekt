@@ -1,15 +1,14 @@
 package GUI;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 
-public class DeleteGame extends JFrame {
+public class DeleteGame extends JPanel {
 
     private JPanel contentPane;
     private JTextField textField;
-    private JButton BtnBack;
-    private JButton BtnDeleteGame;
+    private JButton btnBack;
+    private JButton btnDeleteGame;
 
 
 
@@ -17,45 +16,41 @@ public class DeleteGame extends JFrame {
      * Create the frame.
      */
     public DeleteGame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+
+        setLayout(null);
 
         JLabel lblDeleteGame = new JLabel("Delete Game");
         lblDeleteGame.setHorizontalAlignment(SwingConstants.CENTER);
         lblDeleteGame.setBounds(69, 51, 95, 14);
-        contentPane.add(lblDeleteGame);
+        add(lblDeleteGame);
 
         JLabel lblGameID = new JLabel("Insert GameID");
         lblGameID.setHorizontalAlignment(SwingConstants.CENTER);
         lblGameID.setBounds(69, 98, 95, 14);
-        contentPane.add(lblGameID);
+        add(lblGameID);
 
         textField = new JTextField();
         textField.setText("...");
         textField.setBounds(190, 95, 166, 20);
-        contentPane.add(textField);
+        add(textField);
         textField.setColumns(10);
 
-        JButton btnDeleteGame = new JButton("Delete Game");
+        btnDeleteGame = new JButton("Delete Game");
         btnDeleteGame.setBounds(279, 227, 145, 23);
-        contentPane.add(btnDeleteGame);
+        add(btnDeleteGame);
 
-        JButton btnBack = new JButton("Back");
+        btnBack = new JButton("Back");
         btnBack.setBounds(180, 227, 89, 23);
-        contentPane.add(btnBack);
+        add(btnBack);
     }
     public JButton getBtnBack(){
-        return BtnBack;
+        return btnBack;
     }
     public JButton getBtnDeleteGame(){
-        return BtnDeleteGame;
+        return btnDeleteGame;
     }
     public void addActionListener(ActionListener l){
-        BtnDeleteGame.addActionListener(l);
-        BtnBack.addActionListener(l);
+        btnDeleteGame.addActionListener(l);
+        btnBack.addActionListener(l);
     }
 }

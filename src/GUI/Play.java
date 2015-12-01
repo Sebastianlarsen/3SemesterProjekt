@@ -6,55 +6,45 @@ import java.awt.event.ActionListener;
 public class Play extends JPanel {
 
     private JFrame frame;
-    private JButton BtnBack;
-    private JButton BtnJoinGame;
-    private JButton BtnCreateGame;
+    private JButton btnBack;
+    private JButton btnJoinGame;
+    private JButton btnCreateGame;
 
     /**
      * Create the application.
      */
     public Play() {
-        initialize();
-    }
-
-    /**
-     * Initialize the contents of the frame.
-     */
-    private void initialize() {
-        frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
+        setLayout(null);
 
         JLabel lblPlaySnake = new JLabel("Play Snake");
         lblPlaySnake.setHorizontalAlignment(SwingConstants.CENTER);
         lblPlaySnake.setBounds(146, 26, 136, 14);
-        frame.getContentPane().add(lblPlaySnake);
+        add(lblPlaySnake);
 
-        JButton btnJoinGame = new JButton("Join Game");
+        btnJoinGame = new JButton("Join Game");
         btnJoinGame.setBounds(278, 227, 146, 23);
-        frame.getContentPane().add(btnJoinGame);
+        add(btnJoinGame);
 
-        JButton btnCreateGame = new JButton("Create Game");
+        btnCreateGame = new JButton("Create Game");
         btnCreateGame.setBounds(148, 227, 120, 23);
-        frame.getContentPane().add(btnCreateGame);
+        add(btnCreateGame);
 
-        JButton btnBack = new JButton("Back");
+        btnBack = new JButton("Back");
         btnBack.setBounds(10, 227, 128, 23);
-        frame.getContentPane().add(btnBack);
+        add(btnBack);
     }
     public JButton getBtnBack(){
-        return BtnBack;
+        return btnBack;
     }
     public JButton getBtnJoinGame(){
-        return BtnJoinGame;
+        return btnJoinGame;
     }
     public JButton getBtnCreateGame(){
-        return BtnCreateGame;
+        return btnCreateGame;
     }
     public void addActionListener(ActionListener l){
-        BtnJoinGame.addActionListener(l);
-        BtnBack.addActionListener(l);
-        BtnCreateGame.addActionListener(l);
+        btnJoinGame.addActionListener(l);
+        btnBack.addActionListener(l);
+        btnCreateGame.addActionListener(l);
     }
 }

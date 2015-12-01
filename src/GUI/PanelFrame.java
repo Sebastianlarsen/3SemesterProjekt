@@ -13,11 +13,10 @@ public class PanelFrame extends JFrame{
     public static final String Deletegame = "Delete Game";
     public static final String Highscore = "Highscore";
     public static final String Play = "Play";
-    public static final String Login = "Login";
+    public static final String Login = "LOGIN";
     public static final String StartMenu = "Start Menu";
     public static final String JoinGame = "Join Game";
     public static final String CreateGame = "Create Game";
-    private JPanel contentpane;
     private Login login;
     private DeleteGame deleteGame;
     private CreateGame createGame;
@@ -26,25 +25,17 @@ public class PanelFrame extends JFrame{
     private JoinGame joinGame;
     private StartMenu startMenu;
     private CardLayout cardLayout;
+    private JPanel contentpane;
 
 
     public PanelFrame(){
         contentpane = new JPanel();
-        ScreenSize screenSize = new ScreenSize();
 
-
-
-            /**
-             * Initialize the contents of the frame.
-             */
-
-
-                setBounds(100, 100, 450, 300);
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                setTitle("Snake Game");
-                setContentPane(contentpane);
-                setSize(screenSize.getFrameWidth(), screenSize.getFrameHeight());
-                setLayout(null);
+        setBounds(100, 100, 450, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Snake Game");
+        setContentPane(contentpane);
+        setLayout(null);
 
 
 
@@ -76,19 +67,17 @@ public class PanelFrame extends JFrame{
         cardLayout = (CardLayout) getContentPane().getLayout();
     }
 
-    private void setSize(double frameWidth, double frameHeight) {
-    }
-
-    public DeleteGame getDeletegame() {
+   public DeleteGame getDeletegame() {
         return deleteGame;
     }
+
     public CreateGame getCreateGame(){
         return createGame;
     }
 
-    public Highscore getHighscore() {
-        return highscore;
-    }
+   public Highscore getHighscore(){
+       return highscore;
+   }
 
     public Play getPlay() {
         return play;
@@ -105,9 +94,12 @@ public class PanelFrame extends JFrame{
     public JoinGame getJoinGame() {
         return joinGame;
     }
+
     public void show(String card){
         cardLayout.show(this.getContentPane(),card);
     }
+
+
 }
 
 
