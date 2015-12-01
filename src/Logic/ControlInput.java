@@ -93,7 +93,7 @@ public class ControlInput {
 
             } else if (e.getSource() == frame.getStartMenu().getBtnHighscore()) {
 
-                //
+                controls.highscore(frame);
 
                 frame.show(PanelFrame.Highscore);
 
