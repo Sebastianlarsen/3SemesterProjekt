@@ -79,9 +79,9 @@ public class ServerConnection {
             String output = ClientResponse.getEntity(String.class);
             System.out.println(output);
 
-           // if (ClientResponse != null) {
+            if (ClientResponse != null) {
                 return output;
-            //}
+            }
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(frame, "HTTP failed", "Error", JOptionPane.ERROR_MESSAGE);

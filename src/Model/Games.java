@@ -7,13 +7,13 @@ import java.util.Date;
  */
 public class Games {
 
-    private int id;
-    private int host;
-    private int opponent;
+    private long id;
+    private Player host;
+    private Player opponent;
     private String name;
     private String status;
     private Date created;
-    private int winner;
+    private Player winner;
     private String host_contols;
     private String opponent_controls;
     private int mapsize;
@@ -22,15 +22,15 @@ public class Games {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public int getHost() {
+    public Player getHost() {
         return host;
     }
 
-    public int getOpponent() {
+    public Player getOpponent() {
         return opponent;
     }
 
@@ -46,7 +46,7 @@ public class Games {
         return created;
     }
 
-    public int getWinner() {
+    public Player getWinner() {
         return winner;
     }
 
@@ -62,7 +62,7 @@ public class Games {
         return mapsize;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -70,15 +70,15 @@ public class Games {
         this.name = name;
     }
 
-    public void setHost(int host) {
+    public void setHost(Player host) {
         this.host = host;
     }
 
-    public void setOpponent(int opponent) {
+    public void setOpponent(Player opponent) {
         this.opponent = opponent;
     }
 
-    public void setWinner(int winner) {
+    public void setWinner(Player winner) {
         this.winner = winner;
     }
 

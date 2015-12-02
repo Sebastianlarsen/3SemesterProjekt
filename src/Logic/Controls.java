@@ -1,9 +1,12 @@
 package Logic;
 
 import GUI.PanelFrame;
+import Model.Games;
 import Model.Highscores;
+import Model.Player;
 import Model.User;
 import SDK.ServerConnection;
+import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -16,6 +19,7 @@ public class Controls {
 
     private JSONParser jsonParser;
     private static ServerConnection serverConnection;
+    private Player player;
 
     public Controls(){
         serverConnection = new ServerConnection();
@@ -30,7 +34,11 @@ public class Controls {
                 String msg = deleteGameParser(serverConnection.Delete("Games/" + GameId), currentUser);
 
                 if(msg.equals("Game was deleted")){
+
+                    frame.getDeletegame().clearTxt();
+
                     return true;
+
                 }
                 else if (msg.equals("Failed. Game was not deleted")){
                     JOptionPane.showMessageDialog(frame, "Wrong GameID", "Error", JOptionPane.ERROR_MESSAGE );
@@ -123,7 +131,65 @@ public class Controls {
         return null;
     }
 
+        public boolean createGame(PanelFrame frame, Player player, User currentUser ) {
 
+        try {
+            String GameName = frame.getCreateGame().getGameName();
+            int MapSize = frame.getCreateGame().getMapSize();
+            String Controls = frame.getCreateGame().getControls();
+
+            if (!GameName.equals("")&& MapSize !=0 && !Controls.equals("")) {
+
+                Games games = new Games();
+
+                player.setId(currentUser.getId());
+                player.setControls(Controls);
+                games.setName(GameName);
+                games.setMapsize(MapSize);
+                games.setHost(player);
+
+                String json = new Gson().toJson(games);
+                String msg = createGameParser(serverConnection.post(json, "games/", frame));
+                if (msg.equals(games.getName())) {
+                    JOptionPane.showMessageDialog(frame, "Game was created!\nIt's called " + games.getName(), "Success!", JOptionPane.INFORMATION_MESSAGE);
+
+                    frame.getCreateGame().clearTxt();
+
+                    return true;
+                } else if (msg.equals("Error in JSON") || msg.equals("something went wrong")) {
+                    JOptionPane.showMessageDialog(frame, "se inputtet", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                    else System.out.println("Error Error");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+       return false;
+        }
+
+    public String createGameParser (String string) {
+
+        JSONParser jsonParser = new JSONParser();
+        String GameName = new String();
+
+        try {
+            Object object = jsonParser.parse(string);
+            JSONObject jsonObject = (JSONObject) object;
+
+            GameName = ((String) jsonObject.get("name"));
+            Games games = new Games();
+
+            games.setName(GameName);
+
+            return GameName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
+    }
     public static ServerConnection getServerConnection(){
         return serverConnection;
     }

@@ -1,6 +1,8 @@
 package Logic;
 
 import GUI.PanelFrame;
+import Model.Games;
+import Model.Player;
 import Model.User;
 import SDK.ServerConnection;
 import com.google.gson.Gson;
@@ -29,7 +31,8 @@ public class ControlInput {
     User currentUser = new User ();
     private Controls controls;
     private ServerConnection serverConnection;
-
+    private Player player;
+    private Games  games;
     public ControlInput() {
 
         frame = new PanelFrame();
@@ -41,11 +44,14 @@ public class ControlInput {
         frame.getJoinGame().addActionListener(new JoinGameActionListener());
         frame.getPlay().addActionListener(new PlayActionListener());
         frame.getDeletegame().addActionListener(new DeleteGameActionListener());
+        frame.getCreateGame().addActionListener(new CreateGameActionListener());
 
         frame.show(frame.Login);
 
         serverConnection = new ServerConnection();
         controls = new Controls();
+        player = new Player();
+        games = new Games();
 
 
 
@@ -118,6 +124,28 @@ public class ControlInput {
             }
         }
     }
+
+     class CreateGameActionListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+
+            if (e.getSource() == frame.getCreateGame().getBtnCreateGame()) {
+
+                if (controls.createGame(frame, player, currentUser)){
+
+                    frame.show(PanelFrame.StartMenu);
+                    //frame.getCreateGame().clearTxt();
+                }
+
+            }
+            else if (e.getSource() == frame.getCreateGame().getBtnBack()){
+
+                frame.show(PanelFrame.StartMenu);
+                //frame.getCreateGame().clearTxt();
+
+            }
+        }
+    }
+
     class JoinGameActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -134,13 +162,17 @@ public class ControlInput {
             }
         }
     }
+
     class PlayActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()== frame.getPlay().getBtnBack()){
                 frame.show(PanelFrame.StartMenu);
             }
-            else if (e.getSource()==frame.getJoinGame().getBtnJoinGame()){
+            else if (e.getSource()==frame.getPlay().getBtnCreateGame()){
+                frame.show(PanelFrame.CreateGame);
+            }
+            else if (e.getSource()==frame.getPlay().getBtnJoinGame()){
                 frame.show(PanelFrame.JoinGame);
             }
 
