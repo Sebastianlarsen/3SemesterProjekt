@@ -190,6 +190,46 @@ public class Controls {
             return null;
         }
     }
+    public boolean joinGame(String string, Player player, User currentUser){
+        try {
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    return false;
+    }
+
+
+
+    public void showOpenGames(PanelFrame frame, Games games){
+
+        try {
+
+            Games[] games1 = openGamesParser(serverConnection.get("games/open/"));
+
+            for (Games ga : games1) {
+
+                frame.getJoinGame().getcombobox().addItem(ga.getId());
+
+                System.out.println(ga.getId() + ":\t" + ga.getName());
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public Games[] openGamesParser(String str){
+        try {
+            Gson gson = new Gson();
+            Games[] games = gson.fromJson(str, Games[].class);
+
+            return games;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static ServerConnection getServerConnection(){
         return serverConnection;
     }

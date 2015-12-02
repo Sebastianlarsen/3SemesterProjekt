@@ -9,6 +9,9 @@ public class JoinGame extends JPanel {
     private JButton btnBack;
     private JButton btnJoinGame;
     private JComboBox combobox;
+    private JLabel lblSearchForGames;
+    private JLabel lblSetControls;
+    private JTextField txtsetControls;
    
 
 
@@ -25,20 +28,31 @@ public class JoinGame extends JPanel {
         add(lblJoinGame);
 
         btnJoinGame = new JButton("Join Game");
-        btnJoinGame.setBounds(335, 227, 89, 23);
+        btnJoinGame.setBounds(297, 227, 106, 23);
         add(btnJoinGame);
 
         btnBack = new JButton("Back");
-        btnBack.setBounds(236, 227, 89, 23);
+        btnBack.setBounds(190, 227, 89, 23);
         add(btnBack);
 
-        JLabel lblSearchForGames = new JLabel("Search for Games");
-        lblSearchForGames.setBounds(10, 116, 124, 14);
+        lblSearchForGames = new JLabel("Search for Games");
+        lblSearchForGames.setHorizontalAlignment(SwingConstants.CENTER);
+        lblSearchForGames.setBounds(10, 143, 124, 14);
         add(lblSearchForGames);
 
-        combobox = new JComboBox();
-        combobox.setBounds(146, 83, 109, 80);
-        add(combobox);
+        JComboBox comboBox = new JComboBox();
+        comboBox.setBounds(150, 134, 129, 32);
+        add(comboBox);
+
+        lblSetControls = new JLabel("Set Controls");
+        lblSetControls.setHorizontalAlignment(SwingConstants.CENTER);
+        lblSetControls.setBounds(10, 76, 124, 14);
+        add(lblSetControls);
+
+        txtsetControls = new JTextField();
+        txtsetControls.setBounds(150, 73, 129, 20);
+        add(txtsetControls);
+        txtsetControls.setColumns(10);
 
     }
     public JButton getBtnBack(){

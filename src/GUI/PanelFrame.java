@@ -39,7 +39,7 @@ public class PanelFrame extends JFrame{
 
 
 
-        contentpane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentpane.setBorder(new EmptyBorder(0, 0, 0, 0));
         contentpane.setLayout(new CardLayout(0, 0));
 
 

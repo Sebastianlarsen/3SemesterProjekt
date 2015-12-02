@@ -33,7 +33,7 @@ public class ControlInput {
     private ServerConnection serverConnection;
     private Player player;
     private Games  games;
-    public ControlInput() {
+    public ControlInput()  {
 
         frame = new PanelFrame();
         frame.setVisible(true);
@@ -151,7 +151,7 @@ public class ControlInput {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == frame.getJoinGame().getBtnBack()){
-                frame.show(PanelFrame.StartMenu);
+                frame.show(PanelFrame.Play);
             }
             else if (e.getSource()== frame.getJoinGame()){
                 frame.show(PanelFrame.JoinGame);
