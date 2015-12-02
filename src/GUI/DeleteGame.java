@@ -7,6 +7,8 @@ public class DeleteGame extends JPanel {
 
     private JPanel contentPane;
     private JTextField textField;
+    private JLabel lblGameID;
+    private JLabel lblDeleteGame;
     private JButton btnBack;
     private JButton btnDeleteGame;
 
@@ -19,18 +21,18 @@ public class DeleteGame extends JPanel {
 
         setLayout(null);
 
-        JLabel lblDeleteGame = new JLabel("Delete Game");
+        lblDeleteGame = new JLabel("Delete Game");
         lblDeleteGame.setHorizontalAlignment(SwingConstants.CENTER);
         lblDeleteGame.setBounds(69, 51, 95, 14);
         add(lblDeleteGame);
 
-        JLabel lblGameID = new JLabel("Insert GameID");
+        lblGameID = new JLabel("Insert GameID");
         lblGameID.setHorizontalAlignment(SwingConstants.CENTER);
         lblGameID.setBounds(69, 98, 95, 14);
         add(lblGameID);
 
         textField = new JTextField();
-        textField.setText("...");
+        textField.setText("");
         textField.setBounds(190, 95, 166, 20);
         add(textField);
         textField.setColumns(10);
@@ -42,6 +44,9 @@ public class DeleteGame extends JPanel {
         btnBack = new JButton("Back");
         btnBack.setBounds(180, 227, 89, 23);
         add(btnBack);
+    }
+    public int  getGameID() {
+        return Integer.parseInt(lblGameID.getText());
     }
     public JButton getBtnBack(){
         return btnBack;

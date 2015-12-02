@@ -1,8 +1,8 @@
 package Logic;
 
 import GUI.PanelFrame;
-import SDK.ServerConnection;
 import Model.User;
+import SDK.ServerConnection;
 import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -27,7 +27,7 @@ public class ControlInput {
 
     private PanelFrame frame;
     User currentUser = new User ();
-    Controls controls;
+    private Controls controls;
     private ServerConnection serverConnection;
 
     public ControlInput() {
@@ -89,7 +89,7 @@ public class ControlInput {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == frame.getStartMenu().getBtnDeleteGame()) {
-                frame.show(PanelFrame.StartMenu);
+                frame.show(PanelFrame.Deletegame);
 
             } else if (e.getSource() == frame.getStartMenu().getBtnHighscore()) {
 
@@ -153,7 +153,14 @@ public class ControlInput {
                 frame.show(PanelFrame.StartMenu);
             }
             else if (e.getSource()== frame.getDeletegame().getBtnDeleteGame()){
+                    if (controls.deleteGame(currentUser, frame)){
+                        JOptionPane.showMessageDialog(frame, "Game was deleted!", "Success", JOptionPane.ERROR_MESSAGE );
 
+                        frame.show(PanelFrame.StartMenu);
+                    }
+                else {
+                        frame.show(PanelFrame.Deletegame);
+                    }
             }
         }
     }

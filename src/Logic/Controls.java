@@ -8,27 +8,62 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by Sebastian on 30-11-2015.
  */
 public class Controls {
 
+    private JSONParser jsonParser;
     private static ServerConnection serverConnection;
 
     public Controls(){
         serverConnection = new ServerConnection();
     }
 
-    public boolean deleteGame(User currentUser, Frame frame){
+
+    public boolean deleteGame(User currentUser, PanelFrame frame){
         try {
+            int GameId = frame.getDeletegame().getGameID();
+
+            if(GameId !=0){
+                String msg = deleteGameParser(serverConnection.Delete("Games/" + GameId), currentUser);
+
+                if(msg.equals("Game was deleted")){
+                    return true;
+                }
+                else if (msg.equals("Failed. Game was not deleted")){
+                    JOptionPane.showMessageDialog(frame, "Wrong GameID", "Error", JOptionPane.ERROR_MESSAGE );
+                }
+
+            }
+
 
         }
         catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Issue in Backend", "Error", JOptionPane.ERROR_MESSAGE);
 
         }
         return false;
+    }
+    public String deleteGameParser(String string, User currentUser){
+
+        JSONParser jsonParser = new JSONParser();
+        String msg = new String();
+
+        try {
+            Object object = jsonParser.parse(string);
+            JSONObject jsonObject = (JSONObject) object;
+
+            msg = ((String) jsonObject.get("message"));
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+
+        return msg;
     }
     public void highscore(PanelFrame frame){
 
