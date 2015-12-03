@@ -20,7 +20,7 @@ import java.util.Scanner;
 /**
  * Created by Sebastian on 10-11-2015.
  */
-public class ControlInput {
+public class ControlInput extends NullPointerException{
 
     private static Socket socket;
     private static PrintWriter printWriter;
@@ -217,7 +217,7 @@ public class ControlInput {
 
                     currentUser = user;
 
-                    serverConnection.parser(serverConnection.get("users/" + currentUser.getId()+"/"),currentUser);
+                    serverConnection.parser(serverConnection.get("users/" + currentUser.getId() + "/"),currentUser);
 
                     frame.getLogin().ClearLogin();
 
@@ -252,9 +252,10 @@ public class ControlInput {
 
             msg =((String)jsonObjectMsg.get("message"));
 
-            System.out.println(msg);
-            user.setId((long) jsonObjectMsg.get("userid"));
-
+           System.out.println(msg);
+           // if(msg.equals("Login successful")) {
+                user.setId((int)(long) jsonObjectMsg.get("userid"));
+            //}
             return msg;
         }
         catch (Exception e){

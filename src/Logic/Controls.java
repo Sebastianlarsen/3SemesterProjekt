@@ -35,7 +35,7 @@ public class Controls {
 
                 if(msg.equals("Game was deleted")){
 
-                    frame.getDeletegame().clearTxt();
+                    frame.getDeletegame().clearDeleteGame();
 
                     return true;
 

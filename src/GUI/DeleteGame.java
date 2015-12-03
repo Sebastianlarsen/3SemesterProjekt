@@ -46,9 +46,9 @@ public class DeleteGame extends JPanel {
         add(btnBack);
     }
     public int  getGameID() {
-        return Integer.parseInt(lblGameID.getText());
+        return Integer.parseInt(textField.getText());
     }
-    public void clearTxt() {
+    public void clearDeleteGame() {
         textField.setText("");
     }
     public JButton getBtnBack(){
