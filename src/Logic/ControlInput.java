@@ -79,10 +79,12 @@ public class ControlInput {
     }
 
 
-    private class LoginActionListener implements ActionListener {
+     private class LoginActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
             if (e.getSource() == frame.getLogin().getBtnLogin()) {
+
+
                 if(login()) {
                     frame.show(PanelFrame.StartMenu);
                     System.out.println(currentUser.getId());
@@ -90,6 +92,8 @@ public class ControlInput {
             }
         }
     }
+
+
 
     class StartMenuActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {

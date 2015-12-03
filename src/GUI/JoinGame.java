@@ -40,9 +40,9 @@ public class JoinGame extends JPanel {
         lblSearchForGames.setBounds(10, 143, 124, 14);
         add(lblSearchForGames);
 
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(150, 134, 129, 32);
-        add(comboBox);
+        combobox = new JComboBox();
+        combobox.setBounds(150, 134, 129, 32);
+        add(combobox);
 
         lblSetControls = new JLabel("Set Controls");
         lblSetControls.setHorizontalAlignment(SwingConstants.CENTER);

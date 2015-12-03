@@ -92,12 +92,12 @@ public class ServerConnection {
     }
 
 
-    public String Delete(String path) {
+    public String delete(String path) {
         try {
             Client client = Client.create();
 
             WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
-            ClientResponse ClientResponse = webResource.type("application/json").post(ClientResponse.class);
+            ClientResponse ClientResponse = webResource.type("application/json").delete(ClientResponse.class);
 
             System.out.println("\nOutput from Server... \n");
             String output = ClientResponse.getEntity(String.class);
@@ -111,7 +111,26 @@ public class ServerConnection {
 
         }
     }
+    public String put(String path, String json){
+        try {
 
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+            ClientResponse clientResponse = webResource.type("application/json").put(ClientResponse.class, json);
+
+            System.out.println("\nOutput from server ....\n");
+            String output = clientResponse.getEntity(String.class);
+            System.out.println(output);
+
+            return output;
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
    public void parser(String Json, User user) throws JSONException {
        JSONParser jsonParser = new JSONParser();

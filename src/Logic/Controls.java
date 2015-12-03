@@ -31,7 +31,7 @@ public class Controls {
             int GameId = frame.getDeletegame().getGameID();
 
             if(GameId !=0){
-                String msg = deleteGameParser(serverConnection.Delete("Games/" + GameId), currentUser);
+                String msg = deleteGameParser(serverConnection.delete("Games/" + GameId));
 
                 if(msg.equals("Game was deleted")){
 
@@ -55,7 +55,7 @@ public class Controls {
         }
         return false;
     }
-    public String deleteGameParser(String string, User currentUser){
+    public String deleteGameParser(String string){
 
         JSONParser jsonParser = new JSONParser();
         String msg = new String();
@@ -190,17 +190,6 @@ public class Controls {
             return null;
         }
     }
-    public boolean joinGame(String string, Player player, User currentUser){
-        try {
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    return false;
-    }
-
-
-
     public void showOpenGames(PanelFrame frame, Games games){
 
         try {
@@ -218,6 +207,21 @@ public class Controls {
             e.printStackTrace();
         }
     }
+    public Games getGame(String str){
+        try {
+
+            Gson gson = new Gson();
+
+            Games game = gson.fromJson(str, Games.class);
+
+            return game;
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     public Games[] openGamesParser(String str){
         try {
             Gson gson = new Gson();
@@ -230,6 +234,49 @@ public class Controls {
         }
         return null;
     }
+    public boolean joinGame(PanelFrame frame,Games games, Player player, User currentUser){
+        Gson gson;
+
+        try {
+            gson = new Gson();
+
+            String controls = frame.getJoinGame().getBtnJoinGame().getText();
+
+            if(!controls.equals("")){
+                System.out.println(games.getId());
+                player.setId(currentUser.getId());
+                player.setControls(controls);
+                games.setOpponent(player);
+
+                String json = gson.toJson(games);
+
+                String msg = deleteGameParser(serverConnection.put("games/join/", json));
+
+                if (msg.equals("Game was joined")){
+
+                    Games games1 = getGame(getServerConnection().put("games/start/", json));
+
+                    System.out.println(games.getWinner());
+
+                    if(games1.getWinner().getWinner()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else if(msg.equals("Games closed")){
+                    JOptionPane.showMessageDialog(frame, "ERROR in Json", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    return false;
+    }
+
+
     public static ServerConnection getServerConnection(){
         return serverConnection;
     }
