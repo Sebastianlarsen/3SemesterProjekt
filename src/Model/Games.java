@@ -14,8 +14,8 @@ public class Games {
     private String status;
     private Date created;
     private Player winner;
-    private String host_contols;
-    private String opponent_controls;
+    private String controls;
+    private String opponentcontrols;
     private int mapSize;
 
     public Games(){
@@ -50,12 +50,12 @@ public class Games {
         return winner;
     }
 
-    public String getHost_contols() {
-        return host_contols;
+    public String getControls() {
+        return controls;
     }
 
-    public String getOpponent_controls() {
-        return opponent_controls;
+    public String getOpponentcontrols() {
+        return opponentcontrols;
     }
 
     public int getMapSize() {
@@ -90,12 +90,12 @@ public class Games {
         this.created = created;
     }
 
-    public void setHost_contols(String host_contols) {
-        this.host_contols = host_contols;
+    public void setControls(String controls) {
+        this.controls = controls;
     }
 
-    public void setOpponent_controls(String opponent_controls) {
-        this.opponent_controls = opponent_controls;
+    public void setOpponentcontrols(String opponentcontrols) {
+        this.opponentcontrols = opponentcontrols;
     }
 
     public void setMapSize(int mapSize) {

@@ -65,10 +65,18 @@ public class JoinGame extends JPanel {
     public JComboBox getcombobox(){
         return combobox;
     }
+
+    public JTextField getTxtsetControls() {
+        return txtsetControls;
+    }
+
     public void addActionListener(ActionListener l){
         btnJoinGame.addActionListener(l);
         btnBack.addActionListener(l);
         combobox.addActionListener(l);
+    }
+    public JLabel getLblSearchForGames(){
+        return lblSearchForGames;
     }
 }
 

@@ -5,10 +5,8 @@ import Model.User;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import org.codehaus.jettison.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 
@@ -132,7 +130,7 @@ public class ServerConnection {
         return null;
     }
 
-   public void parser(String Json, User user) throws JSONException {
+   public void parser(String Json, User user)  {
        JSONParser jsonParser = new JSONParser();
 
        try {
@@ -147,7 +145,7 @@ public class ServerConnection {
 
 
 
-        } catch (ParseException e) {
+        } catch (Exception e) {
            e.printStackTrace();
        }
 

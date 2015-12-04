@@ -12,9 +12,6 @@ import org.json.simple.parser.JSONParser;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Scanner;
 
 
 /**
@@ -22,17 +19,18 @@ import java.util.Scanner;
  */
 public class ControlInput extends NullPointerException{
 
-    private static Socket socket;
+   /* private static Socket socket;
     private static PrintWriter printWriter;
     private static Scanner sc;
-
+*/
 
     private PanelFrame frame;
-    User currentUser = new User ();
+    private User currentUser = new User ();
     private Controls controls;
     private ServerConnection serverConnection;
     private Player player;
     private Games  games;
+
     public ControlInput()  {
 
         frame = new PanelFrame();
@@ -58,7 +56,7 @@ public class ControlInput extends NullPointerException{
     }
 
 
-    public void socketMethod() {
+    /*public void socketMethod() {
         try {
 
 
@@ -76,7 +74,7 @@ public class ControlInput extends NullPointerException{
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
+    }*/
 
 
      private class LoginActionListener implements ActionListener {
@@ -137,14 +135,14 @@ public class ControlInput extends NullPointerException{
                 if (controls.createGame(frame, player, currentUser)){
 
                     frame.show(PanelFrame.StartMenu);
-                    //frame.getCreateGame().clearTxt();
+                    frame.getCreateGame().clearTxt();
                 }
 
             }
             else if (e.getSource() == frame.getCreateGame().getBtnBack()){
 
                 frame.show(PanelFrame.StartMenu);
-                //frame.getCreateGame().clearTxt();
+
 
             }
         }
@@ -153,15 +151,21 @@ public class ControlInput extends NullPointerException{
     class JoinGameActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            Controls controls = new Controls();
 
             if (e.getSource() == frame.getJoinGame().getBtnBack()){
                 frame.show(PanelFrame.Play);
-            }
-            else if (e.getSource()== frame.getJoinGame()){
-                frame.show(PanelFrame.JoinGame);
 
             }
+            else if (e.getSource()== frame.getJoinGame()){
+                if(controls.joinGame(frame, games, player, currentUser)) {
+                    JOptionPane.showMessageDialog(frame, "YOU WON", "Success!", JOptionPane.INFORMATION_MESSAGE);
+                    frame.show(PanelFrame.JoinGame);
+                }
+                else JOptionPane.showMessageDialog(frame, "Sorry, YOU LOST!", "Failure", JOptionPane.WARNING_MESSAGE);
+            }
             else if (e.getSource() == frame.getJoinGame().getcombobox()){
+                games = controls.showGameInfo(frame);
 
             }
         }
@@ -177,6 +181,7 @@ public class ControlInput extends NullPointerException{
                 frame.show(PanelFrame.CreateGame);
             }
             else if (e.getSource()==frame.getPlay().getBtnJoinGame()){
+                controls.showOpenGames(frame);
                 frame.show(PanelFrame.JoinGame);
             }
 

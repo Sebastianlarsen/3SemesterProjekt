@@ -190,10 +190,24 @@ public class Controls {
             return null;
         }
     }
-    public void showOpenGames(PanelFrame frame, Games games){
+    public Games showGameInfo(PanelFrame frame){
+        try {
+            int msg = Integer.parseInt(frame.getJoinGame().getcombobox().getSelectedItem().toString());
+            Games games = getGame(serverConnection.get("game/" + msg +"/"));
+
+            frame.getJoinGame().getLblSearchForGames().setText("Game name: " + games.getName());
+
+            return games;
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public void showOpenGames(PanelFrame frame){
 
         try {
-
             Games[] games1 = openGamesParser(serverConnection.get("games/open/"));
 
             for (Games ga : games1) {
@@ -207,40 +221,41 @@ public class Controls {
             e.printStackTrace();
         }
     }
-    public Games getGame(String str){
+    public Games getGame(String string){
         try {
 
             Gson gson = new Gson();
 
-            Games game = gson.fromJson(str, Games.class);
-
-            return game;
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public Games[] openGamesParser(String str){
-        try {
-            Gson gson = new Gson();
-            Games[] games = gson.fromJson(str, Games[].class);
+            Games games = gson.fromJson(string, Games.class);
 
             return games;
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
         return null;
     }
-    public boolean joinGame(PanelFrame frame,Games games, Player player, User currentUser){
+    public Games[] openGamesParser(String string){
+        try {
+            Gson gson = new Gson();
+
+            Games[] game1 = gson.fromJson(string, Games[].class);
+
+            return game1;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public boolean joinGame(PanelFrame frame, Games games, Player player, User currentUser){
         Gson gson;
 
         try {
             gson = new Gson();
 
-            String controls = frame.getJoinGame().getBtnJoinGame().getText();
+            String controls = frame.getJoinGame().getTxtsetControls().getText();
 
             if(!controls.equals("")){
                 System.out.println(games.getId());
