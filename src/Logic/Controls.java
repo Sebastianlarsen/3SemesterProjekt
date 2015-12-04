@@ -31,7 +31,7 @@ public class Controls {
             int GameId = frame.getDeletegame().getGameID();
 
             if(GameId !=0){
-                String msg = deleteGameParser(serverConnection.delete("Games/" + GameId));
+                String msg = deleteGameParser(serverConnection.delete("games/" + GameId));
 
                 if(msg.equals("Game was deleted")){
 
