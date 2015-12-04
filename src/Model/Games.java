@@ -16,7 +16,7 @@ public class Games {
     private Player winner;
     private String host_contols;
     private String opponent_controls;
-    private int mapsize;
+    private int mapSize;
 
     public Games(){
 
@@ -58,8 +58,8 @@ public class Games {
         return opponent_controls;
     }
 
-    public int getMapsize() {
-        return mapsize;
+    public int getMapSize() {
+        return mapSize;
     }
 
     public void setId(long id) {
@@ -98,7 +98,7 @@ public class Games {
         this.opponent_controls = opponent_controls;
     }
 
-    public void setMapsize(int mapsize) {
-        this.mapsize = mapsize;
+    public void setMapSize(int mapSize) {
+        this.mapSize = mapSize;
     }
 }

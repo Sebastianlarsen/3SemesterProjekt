@@ -145,7 +145,7 @@ public class Controls {
                 player.setId(currentUser.getId());
                 player.setControls(Controls);
                 games.setName(GameName);
-                games.setMapsize(MapSize);
+                games.setMapSize(MapSize);
                 games.setHost(player);
 
                 String json = new Gson().toJson(games);
