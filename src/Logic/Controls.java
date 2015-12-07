@@ -212,7 +212,7 @@ public class Controls {
 
             for (Games ga : games1) {
 
-                frame.getJoinGame().getcombobox().addItem(ga.getId());
+                frame.getJoinGame().getcombobox().addItem(ga.getName());
 
                 System.out.println(ga.getId() + ":\t" + ga.getName());
             }
@@ -288,9 +288,8 @@ public class Controls {
         }catch (Exception e){
             e.printStackTrace();
         }
-    return false;
+        return false;
     }
-
 
     public static ServerConnection getServerConnection(){
         return serverConnection;

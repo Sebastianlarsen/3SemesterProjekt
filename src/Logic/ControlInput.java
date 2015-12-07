@@ -157,7 +157,7 @@ public class ControlInput extends NullPointerException{
                 frame.show(PanelFrame.Play);
 
             }
-            else if (e.getSource()== frame.getJoinGame()){
+            else if (e.getSource()== frame.getJoinGame().getBtnJoinGame()){
                 if(controls.joinGame(frame, games, player, currentUser)) {
                     JOptionPane.showMessageDialog(frame, "YOU WON", "Success!", JOptionPane.INFORMATION_MESSAGE);
                     frame.show(PanelFrame.JoinGame);
@@ -171,6 +171,11 @@ public class ControlInput extends NullPointerException{
         }
     }
 
+
+    /**
+     * @param
+     * @
+     */
     class PlayActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
