@@ -25,7 +25,12 @@ public class Controls {
         serverConnection = new ServerConnection();
     }
 
-
+    /**
+     * Gets th gameID of the game that shall deletes
+     * @param currentUser
+     * @param frame
+     * @return
+     */
     public boolean deleteGame(User currentUser, PanelFrame frame){
         try {
             int GameId = frame.getDeletegame().getGameID();
@@ -55,6 +60,12 @@ public class Controls {
         }
         return false;
     }
+
+    /**
+     * Converts a JSON string into an object
+     * @param string
+     * @return
+     */
     public String deleteGameParser(String string){
 
         JSONParser jsonParser = new JSONParser();
@@ -73,6 +84,11 @@ public class Controls {
 
         return msg;
     }
+
+    /**
+     * You get the labels and set the texts and then get the places where the score is.
+     * @param frame
+     */
     public void highscore(PanelFrame frame){
 
 
@@ -93,6 +109,12 @@ public class Controls {
         }
     }
 
+    /**
+     * Converts a JSON string into an object
+     * Gets the specified place as a JSONObject and then sets the place.
+     * @param string
+     * @return
+     */
     public Highscores highscoreParser(String string){
         JSONParser jsonParser = new JSONParser();
         long place1;
@@ -131,6 +153,14 @@ public class Controls {
         return null;
     }
 
+    /**
+     * Gets the name, MapSize and controls of the host.
+     * then it creates a new game, by setting Id, controls, name and size.
+     * @param frame
+     * @param player
+     * @param currentUser
+     * @return
+     */
         public boolean createGame(PanelFrame frame, Player player, User currentUser ) {
 
         try {
@@ -168,6 +198,12 @@ public class Controls {
        return false;
         }
 
+    /**
+     * Converts a JSON string into an object
+     * Gets the specified name as a JSONObject
+     * @param string
+     * @return
+     */
     public String createGameParser (String string) {
 
         JSONParser jsonParser = new JSONParser();
@@ -190,8 +226,17 @@ public class Controls {
             return null;
         }
     }
+
+    /**
+     * Gets the gameName from the label, so i can select the game in the combobox
+     * @param frame
+     * @return
+     */
     public Games showGameInfo(PanelFrame frame){
         try {
+            /**
+             * i*m parsing an int to a string, else it can be read
+             */
             int msg = Integer.parseInt(frame.getJoinGame().getcombobox().getSelectedItem().toString());
             Games games = getGame(serverConnection.get("game/" + msg +"/"));
 
@@ -205,6 +250,11 @@ public class Controls {
         }
         return null;
     }
+
+    /**
+     * Adding all the Items to the Combobox, and then it will  show the names of the open games.
+     * @param frame
+     */
     public void showOpenGames(PanelFrame frame){
 
         try {
@@ -221,6 +271,12 @@ public class Controls {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Getting the games and converting it from JSon.
+     * @param string
+     * @return
+     */
     public Games getGame(String string){
         try {
 
@@ -236,6 +292,12 @@ public class Controls {
         }
         return null;
     }
+
+    /**
+     * Converts from a Json
+     * @param string
+     * @return
+     */
     public Games[] openGamesParser(String string){
         try {
             Gson gson = new Gson();
@@ -249,6 +311,17 @@ public class Controls {
         }
         return null;
     }
+
+    /**
+     * Getting the controls from the opponent, then getting the GameID.
+     * Sets the ID, controls and opponent.
+     * Then it finds the winner of the game
+     * @param frame
+     * @param games
+     * @param player
+     * @param currentUser
+     * @return
+     */
     public boolean joinGame(PanelFrame frame, Games games, Player player, User currentUser){
         Gson gson;
 
@@ -273,12 +346,7 @@ public class Controls {
 
                     System.out.println(games.getWinner());
 
-                    if(games1.getWinner().getWinner()){
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
+                    return games1.getWinner().getWinner();
                 }
                 else if(msg.equals("Games closed")){
                     JOptionPane.showMessageDialog(frame, "ERROR in Json", "Error", JOptionPane.ERROR_MESSAGE);

@@ -13,7 +13,7 @@ public class Login extends JPanel {
     private JLabel lblPassword;
 
     /**
-     * Create the application.
+     * Create the frame
      */
     public Login() {
 

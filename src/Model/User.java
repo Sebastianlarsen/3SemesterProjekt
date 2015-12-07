@@ -13,7 +13,9 @@ public class User {
     private String status;
     private int type;
     private String created;
-
+    /**
+     * Getter and setter for user class, so i can get and set them in the other classes.
+     */
     public User (){
 
     }

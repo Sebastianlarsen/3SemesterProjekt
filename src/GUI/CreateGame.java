@@ -24,8 +24,10 @@ public class CreateGame extends JPanel{
     public CreateGame() {
 
 
-    setLayout(null);
-
+        setLayout(null);
+        /**
+         * Create labels, textfields and buttons in my GUI, so when i open my app, there will be a design.
+         */
         lblCreateGame = new JLabel("Create Game");
         lblCreateGame.setHorizontalAlignment(SwingConstants.CENTER);
         lblCreateGame.setBounds(135, 25, 108, 14);
@@ -70,6 +72,10 @@ public class CreateGame extends JPanel{
         txtMapSize.setColumns(10);
     }
 
+    /**
+     * returns buttons, so they get when pressed and textfields so they get the typed text
+     * @return
+     */
     public JButton getBtnBack() {
         return btnBack;
     }
@@ -86,10 +92,18 @@ public class CreateGame extends JPanel{
         return Integer.parseInt(txtMapSize.getText());
     }
 
+    /**
+     * Adds actionlisteners to buttons
+     * @param l
+     */
     public void addActionListener(ActionListener l){
         btnBack.addActionListener(l);
         btnCreateGame.addActionListener(l);
     }
+
+    /**
+     * Clear textfelts after use
+     */
     public void clearTxt(){
 
         txtControls.setText("");

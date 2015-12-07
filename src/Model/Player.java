@@ -9,7 +9,9 @@ public class Player extends User{
     private int totalScore;
     private String controls;
     private Boolean winner;
-
+    /**
+     * Getter and setter for player class, so i can get and set them in the other classes.
+     */
     public Player (){
 
     }

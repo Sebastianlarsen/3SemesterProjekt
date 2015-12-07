@@ -11,7 +11,7 @@ public class Play extends JPanel {
     private JButton btnCreateGame;
 
     /**
-     * Create the application.
+     * Create the frame
      */
     public Play() {
         setLayout(null);

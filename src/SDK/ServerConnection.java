@@ -38,6 +38,12 @@ public class ServerConnection {
         return port;
     }
 
+    /**
+     * get method. Receives a string with the path with which to get data from the server. Returns it in the message
+     * variable
+     * @param path
+     * @return
+     */
     public String get(String path) {
 
         try {
@@ -60,7 +66,15 @@ public class ServerConnection {
         }
     }
 
-
+    /**
+     * Like the get method, it receives a string corresponding to the path from which it will connect with the server.
+     * Also it receives data as a String in json format, which it sends to the server. Is done with the ClientResponse
+     * object. The string variable message gets the answer from the server and the method returns the string.
+     * @param json
+     * @param path
+     * @param frame
+     * @return
+     */
     public String post(String json, String path, PanelFrame frame) {
 
         try {
@@ -89,6 +103,11 @@ public class ServerConnection {
         return "";
     }
 
+    /**
+     * Delete method. Like the get method it receives a path as parameter and uses to connect to the server.
+     * @param path
+     * @return
+     */
 
     public String delete(String path) {
         try {
@@ -109,6 +128,13 @@ public class ServerConnection {
 
         }
     }
+
+    /**
+     * Like the post method, it receives both a path and data, which it sends to the server through the .put method.
+     * @param path
+     * @param json
+     * @return
+     */
     public String put(String path, String json){
         try {
 
@@ -130,6 +156,11 @@ public class ServerConnection {
         return null;
     }
 
+    /**
+     * Parsing the string and Json, getting the jsonObject.
+     * @param Json
+     * @param user
+     */
    public void parser(String Json, User user)  {
        JSONParser jsonParser = new JSONParser();
 

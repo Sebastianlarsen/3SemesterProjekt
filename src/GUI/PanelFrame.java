@@ -27,6 +27,9 @@ public class PanelFrame extends JFrame{
     private CardLayout cardLayout;
     private JPanel contentpane;
 
+    /**
+     * Creates the JPanel, and adding all the contents to the panel
+     */
 
     public PanelFrame(){
         contentpane = new JPanel();

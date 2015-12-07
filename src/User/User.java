@@ -1,11 +1,9 @@
 package User;
 
-import java.util.Date;
-
 /**
  * Created by Sebastian on 16-11-2015.
  */
-public class User {
+/* public class User {
     private int id;
     private String first_name;
     private String last_name;
@@ -90,3 +88,4 @@ public class User {
         this.type = type;
     }
 }
+*/

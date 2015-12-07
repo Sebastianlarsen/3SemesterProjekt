@@ -9,6 +9,9 @@ public class Scores {
     private int score_id;
     private int game_id;
 
+    /**
+     * Getter and setter for scores class, so i can get and set them in the other classes.
+     */
     public Scores(){
 
     }

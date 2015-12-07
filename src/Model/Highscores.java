@@ -11,6 +11,10 @@ public class Highscores {
     private long place5;
     private long place6;
 
+   /**
+     * Getter and setter for Highscore class, so i can get and set them in the other classes.
+     */
+
     public Highscores(){
 
     }

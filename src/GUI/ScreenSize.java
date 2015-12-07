@@ -1,9 +1,6 @@
 package GUI;
 
-        import java.awt.*;
-
-
-public class ScreenSize {
+        /*public class ScreenSize {
 
     private static Dimension ScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -29,4 +26,4 @@ public class ScreenSize {
     public double getFrameHeight() {
         return frameHeight;
     }
-}
+}*/

@@ -3,7 +3,7 @@ package SDK;
 /**
  * Created by Sebastian on 30-11-2015.
  */
-public class Socket {
+//public class Socket {
     /*private static Socket socket;
     private static PrintWriter printWriter;
     private static Scanner sc;
@@ -33,4 +33,4 @@ public class Socket {
 */
 
 
-}
+//}

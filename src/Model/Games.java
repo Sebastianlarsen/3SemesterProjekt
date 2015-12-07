@@ -18,6 +18,9 @@ public class Games {
     private String opponentcontrols;
     private int mapSize;
 
+    /**
+     * Getter and setter for game class, so i can get and set them in the other classes.
+     */
     public Games(){
 
     }

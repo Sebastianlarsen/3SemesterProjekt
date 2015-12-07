@@ -23,7 +23,7 @@ public class Highscore extends JPanel {
 
 
     /**
-     * Create the application.
+     * Create the frame
      */
     public Highscore() {
 

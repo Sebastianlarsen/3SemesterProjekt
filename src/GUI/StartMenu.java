@@ -13,7 +13,7 @@ public class StartMenu extends JPanel {
     private JButton btnDeleteGame;
 
     /**
-     * Create the application.
+     * Create the frame.
      */
     public StartMenu() {
         setLayout(null);

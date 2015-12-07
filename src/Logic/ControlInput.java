@@ -35,7 +35,9 @@ public class ControlInput extends NullPointerException{
 
         frame = new PanelFrame();
         frame.setVisible(true);
-
+/**
+ * Get the contents from the panelframe, so i can add the actionlisteners
+ */
         frame.getLogin().addActionListener(new LoginActionListener());
         frame.getStartMenu().addActionListener(new StartMenuActionListener());
         frame.getHighscore().addActionListener(new HighscoreActionListener());
@@ -44,7 +46,7 @@ public class ControlInput extends NullPointerException{
         frame.getDeletegame().addActionListener(new DeleteGameActionListener());
         frame.getCreateGame().addActionListener(new CreateGameActionListener());
 
-        frame.show(frame.Login);
+        frame.show(PanelFrame.Login);
 
         serverConnection = new ServerConnection();
         controls = new Controls();
@@ -76,7 +78,10 @@ public class ControlInput extends NullPointerException{
         }
     }*/
 
-
+    /**
+     * Inner class action listener for login panel
+     * if the button login is pressed the you will get to the Startmenu
+     */
      private class LoginActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
@@ -210,6 +215,12 @@ public class ControlInput extends NullPointerException{
             }
         }
     }
+
+    /**
+     * First you get the username and password, and if they match a user from the database, then you are logged in.
+     * convert java object to JSON format, and returned as JSON formatted string
+     * @return
+     */
     public boolean login(){
         try {
             String username = frame.getLogin().getTxtUsername().getText();
@@ -226,9 +237,13 @@ public class ControlInput extends NullPointerException{
                 if(msg.equals("Login successful")){
 
                     currentUser = user;
-
+/**
+ * Parsing with the get method from serverconnection, so i can get userID
+ */
                     serverConnection.parser(serverConnection.get("users/" + currentUser.getId() + "/"),currentUser);
-
+/**
+ * clear the login textfields, so a new user can't get your informations.
+ */
                     frame.getLogin().ClearLogin();
 
                     return true;
@@ -251,6 +266,13 @@ public class ControlInput extends NullPointerException{
         return false;
     }
 
+    /**
+     * Converts a JSON string into an object
+     * Gets the specified member as a JSONObject
+     * @param string
+     * @param user
+     * @return
+     */
     public String loginParser(String string, User user) {
         JSONParser parser = new JSONParser();
         String msg = new String();

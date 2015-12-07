@@ -17,7 +17,7 @@ public class JoinGame extends JPanel {
 
 
     /**
-     * Create the application.
+     * Create the frame
      */
     public JoinGame() {
 
@@ -46,6 +46,7 @@ public class JoinGame extends JPanel {
         add(txtsetgameID);
         txtsetgameID.setColumns(10);
 */
+
        combobox = new JComboBox();
         combobox.setBounds(150, 134, 129, 32);
         add(combobox);
