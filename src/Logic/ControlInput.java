@@ -169,7 +169,7 @@ public class ControlInput extends NullPointerException{
                 }
                 else JOptionPane.showMessageDialog(frame, "Sorry, YOU LOST!", "Failure", JOptionPane.WARNING_MESSAGE);
             }
-            else if (e.getSource() == frame.getJoinGame().getcombobox()){
+            else if (e.getSource() == frame.getJoinGame().getTxtsetgameID()){
                 games = controls.showGameInfo(frame);
 
             }

@@ -237,7 +237,7 @@ public class Controls {
             /**
              * i*m parsing an int to a string, else it can be read
              */
-            int msg = Integer.parseInt(frame.getJoinGame().getcombobox().getSelectedItem().toString());
+            int msg = Integer.parseInt(frame.getJoinGame().getTxtsetgameID().toString());
             Games games = getGame(serverConnection.get("game/" + msg +"/"));
 
             frame.getJoinGame().getLblSearchForGames().setText("Game name: " + games.getName());
@@ -262,7 +262,7 @@ public class Controls {
 
             for (Games ga : games1) {
 
-                frame.getJoinGame().getcombobox().addItem(ga.getName());
+                frame.getJoinGame().getTxtsetgameID();
 
                 System.out.println(ga.getId() + ":\t" + ga.getName());
             }

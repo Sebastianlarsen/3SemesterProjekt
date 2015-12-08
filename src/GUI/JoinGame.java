@@ -8,8 +8,8 @@ public class JoinGame extends JPanel {
     private JFrame frame;
     private JButton btnBack;
     private JButton btnJoinGame;
-    private JComboBox combobox;
-   // private JTextField txtsetgameID;
+    // private JComboBox combobox;
+    private JTextField txtsetgameID;
     private JLabel lblSearchForGames;
     private JLabel lblSetControls;
     private JTextField txtsetControls;
@@ -36,20 +36,20 @@ public class JoinGame extends JPanel {
         btnBack.setBounds(190, 227, 89, 23);
         add(btnBack);
 
-        lblSearchForGames = new JLabel("Choose Game");
+        lblSearchForGames = new JLabel("Set game ID");
         lblSearchForGames.setHorizontalAlignment(SwingConstants.CENTER);
         lblSearchForGames.setBounds(10, 143, 124, 14);
         add(lblSearchForGames);
 
-        /*txtsetgameID = new JTextField();
+        txtsetgameID = new JTextField();
         txtsetgameID.setBounds(155, 140, 124, 20);
         add(txtsetgameID);
         txtsetgameID.setColumns(10);
-*/
 
-       combobox = new JComboBox();
+
+       /*combobox = new JComboBox();
         combobox.setBounds(150, 134, 129, 32);
-        add(combobox);
+        add(combobox);*/
 
         lblSetControls = new JLabel("Set Controls");
         lblSetControls.setHorizontalAlignment(SwingConstants.CENTER);
@@ -69,12 +69,12 @@ public class JoinGame extends JPanel {
         return btnJoinGame;
     }
 
-    /*public JTextField getTxtsetgameID(){
+    public JTextField getTxtsetgameID(){
         return txtsetgameID;
-    }*/
-   public JComboBox getcombobox(){
-        return combobox;
     }
+   /*public JComboBox getcombobox(){
+        return combobox;
+    }*/
 
     public JTextField getTxtsetControls() {
         return txtsetControls;
@@ -83,8 +83,8 @@ public class JoinGame extends JPanel {
     public void addActionListener(ActionListener l){
         btnJoinGame.addActionListener(l);
         btnBack.addActionListener(l);
-        //txtsetgameID.addActionListener(l);
-        combobox.addActionListener(l);
+        txtsetgameID.addActionListener(l);
+        //combobox.addActionListener(l);
     }
     public JLabel getLblSearchForGames(){
         return lblSearchForGames;
