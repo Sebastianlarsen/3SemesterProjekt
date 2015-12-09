@@ -322,19 +322,22 @@ public class Controls {
      * @param currentUser
      * @return
      */
-    public boolean joinGame(PanelFrame frame, Games games, Player player, User currentUser){
+    public boolean joinGame(PanelFrame frame, Games games, User currentUser){
         Gson gson;
 
         try {
+            Player player = new Player();
             gson = new Gson();
 
             String controls = frame.getJoinGame().getTxtsetControls().getText();
+            long gameId = Integer.parseInt( frame.getJoinGame().getTxtsetgameID().getText());
 
             if(!controls.equals("")){
-                System.out.println(games.getId());
+
                 player.setId(currentUser.getId());
                 player.setControls(controls);
                 games.setOpponent(player);
+                games.setId(gameId);
 
                 String json = gson.toJson(games);
 
