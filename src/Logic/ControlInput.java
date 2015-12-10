@@ -36,7 +36,7 @@ public class ControlInput extends NullPointerException{
         frame = new PanelFrame();
         frame.setVisible(true);
 /**
- * Get the contents from the panelframe, so i can add the actionlisteners
+ * adds the actionlisternes to the panels
  */
         frame.getLogin().addActionListener(new LoginActionListener());
         frame.getStartMenu().addActionListener(new StartMenuActionListener());
@@ -79,8 +79,11 @@ public class ControlInput extends NullPointerException{
     }*/
 
     /**
-     * Inner class action listener for login panel
-     * if the button login is pressed the you will get to the Startmenu
+     * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * Handles buttons event for this inner class
+     * Gets the if statements that tells what to do
+     * if this is done, then it wil get to the Menu.
      */
      private class LoginActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -96,7 +99,13 @@ public class ControlInput extends NullPointerException{
         }
     }
 
-
+    /**
+     * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * Handles buttons event for this inner class
+     * Gets the if statements that tells what to do
+     * if this is done, then it wil get to the button that is pressed .
+     */
 
     class StartMenuActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -122,6 +131,11 @@ public class ControlInput extends NullPointerException{
 
         }
     }
+    /**
+     * * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * This private inner class handles when the button in the highscore panel is pressed.
+     */
     class HighscoreActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -132,6 +146,11 @@ public class ControlInput extends NullPointerException{
         }
     }
 
+    /**
+     * * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * This private inner class handles when the button in the creategame panel is pressed.
+     */
      class CreateGameActionListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
 
@@ -152,7 +171,11 @@ public class ControlInput extends NullPointerException{
             }
         }
     }
-
+    /**
+     * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * This private inner class handles when something in the join game panel is pressed
+     */
     class JoinGameActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -180,8 +203,9 @@ public class ControlInput extends NullPointerException{
 
 
     /**
-     * @param
-     * @
+     * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * This private inner class handles when the button in the play panel is pressed.
      */
     class PlayActionListener implements ActionListener{
         @Override
@@ -199,6 +223,11 @@ public class ControlInput extends NullPointerException{
 
         }
     }
+    /**
+     * Declare the private inner event handler class and specifies that the class
+     * should implement the action listener.
+     * This private inner class handles when the button in the delete panel is pressed.
+     */
     class DeleteGameActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -219,8 +248,10 @@ public class ControlInput extends NullPointerException{
     }
 
     /**
+     * Creates the login method
      * First you get the username and password, and if they match a user from the database, then you are logged in.
      * convert java object to JSON format, and returned as JSON formatted string
+     * And gets error messages if there is an error.
      * @return
      */
     public boolean login(){
@@ -271,6 +302,7 @@ public class ControlInput extends NullPointerException{
     /**
      * Converts a JSON string into an object
      * Gets the specified member as a JSONObject
+     * Prints stack trace of the exception to the system
      * @param string
      * @param user
      * @return

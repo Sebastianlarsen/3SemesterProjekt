@@ -16,17 +16,23 @@ import javax.swing.*;
  * Created by Sebastian on 30-11-2015.
  */
 public class Controls {
-
+    //variables names set to JSONParsers, serverconnection and player.
     private JSONParser jsonParser;
     private static ServerConnection serverConnection;
     private Player player;
+
+    /**
+     * The constructor of this class  which is used to create objects of the variables and assign values to them
+      */
 
     public Controls(){
         serverConnection = new ServerConnection();
     }
 
     /**
-     * Gets th gameID of the game that shall deletes
+     * Creates the deletegame method
+     * Gets the gameID of the game that shall deletes and soft deletes it
+     * Prints stack trace of the exception to the system
      * @param currentUser
      * @param frame
      * @return
@@ -63,6 +69,7 @@ public class Controls {
 
     /**
      * Converts a JSON string into an object
+     * Parsing the message from JSON so other method can use it.
      * @param string
      * @return
      */
@@ -86,7 +93,8 @@ public class Controls {
     }
 
     /**
-     * You get the labels and set the texts and then get the places where the score is.
+     * Creates the Highscore method
+     * Reads the scores from the server and sets it in the client
      * @param frame
      */
     public void highscore(PanelFrame frame){
@@ -110,6 +118,7 @@ public class Controls {
     }
 
     /**
+     * Higschore parser that reads the higshcore sent from the server.
      * Converts a JSON string into an object
      * Gets the specified place as a JSONObject and then sets the place.
      * @param string
@@ -154,8 +163,11 @@ public class Controls {
     }
 
     /**
+     * creates the create game method
      * Gets the name, MapSize and controls of the host.
      * then it creates a new game, by setting Id, controls, name and size.
+     * Converts Javaobject to JSON with GSON
+     * Prints stack trace of the exception to the system
      * @param frame
      * @param player
      * @param currentUser
@@ -201,6 +213,7 @@ public class Controls {
     /**
      * Converts a JSON string into an object
      * Gets the specified name as a JSONObject
+     * reads name via Json, creates a new object of game and sets the name of the game
      * @param string
      * @return
      */
@@ -228,11 +241,12 @@ public class Controls {
     }
 
     /**
-     * Gets the gameName from the label, so i can select the game in the combobox
+     * Creates showExistingGamesInfo method
+     * reads the existing games and sets it so the user can see it
      * @param frame
      * @return
      */
-    public Games showGameInfo(PanelFrame frame){
+   public Games showGameInfo(PanelFrame frame){
         try {
             /**
              * i*m parsing an int to a string, else it can be read
@@ -252,7 +266,7 @@ public class Controls {
     }
 
     /**
-     * Adding all the Items to the Combobox, and then it will  show the names of the open games.
+     * Creates the showOpenGames method so it can get the ID from the textfield.
      * @param frame
      */
     public void showOpenGames(PanelFrame frame){
@@ -273,6 +287,7 @@ public class Controls {
     }
 
     /**
+     * Creates the getGame method
      * Getting the games and converting it from JSon.
      * @param string
      * @return
@@ -294,6 +309,7 @@ public class Controls {
     }
 
     /**
+     * creates the parser
      * Converts from a Json
      * @param string
      * @return
@@ -313,9 +329,11 @@ public class Controls {
     }
 
     /**
+     * Creates the join game method
      * Getting the controls from the opponent, then getting the GameID.
      * Sets the ID, controls and opponent.
      * Then it finds the winner of the game
+     * Prints stack trace of the exception to the system
      * @param frame
      * @param games
      * @param player
